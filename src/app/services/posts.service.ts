@@ -1,36 +1,23 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collectionData, collection, orderBy, query, doc, setDoc } from '@angular/fire/firestore'; 
 import { Observable } from 'rxjs';
-
-interface Service{
-  id: number;
-  name: string;
-  area: string;
-  client: string;
-  duration: string;
-  active: boolean;
-  latitude: number;
-  longitude: number;
-}
+import { BusService } from '../shared/models/data-bus';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
-
 export class PostsService {
   firestore: Firestore = inject(Firestore)
 
-  constructor() {
-  }
+  constructor() {}
 
   getPosts(): Observable<any[]>{ 
     const itemCollection = collection(this.firestore, "Services");
     const orderedQuery = query(itemCollection, orderBy("id", "asc"));    
 
-    return collectionData(orderedQuery) as Observable<Service[]>; // Convierte en un Observable
-    //return this.firestore.collectionGroup("Services").valueChanges();
+    return collectionData(orderedQuery) as Observable<BusService[]>;
+    //return this.firestore.collectionGroup("Services").valueChanges(); -> Deprecated
   }
 
   addPost(post: any){
@@ -40,10 +27,9 @@ export class PostsService {
     const colRef = collection(this.firestore, "Services");
     const docRef = doc(colRef, post.id.toString());
 
-    setDoc(docRef, post);
+    setDoc(docRef, post);// -> addDoc no sobreescriu. setDoc sí ho fa
 
-    
-   // return this.firestore.collection("Services").add(post);
+   // return this.firestore.collection("Services").add(post); -> Deprecated
   }
 
 }

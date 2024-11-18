@@ -14,11 +14,9 @@ import { PostsService } from './services/posts.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent{
-  constructor(){
-  }
-    /*this.postsService.getPosts().subscribe((result) => {
-      console.log({result})
-    })*/
+  
+  constructor(){}
+
   title = 'BusProject';
 
 

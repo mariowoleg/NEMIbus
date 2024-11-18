@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { BusService, busServices } from '../../data-bus';
+import { BusService, busServices } from '../../shared/models/data-bus';
 import { NgClass, NgFor } from '@angular/common';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog'
 import { BusPopupComponent } from '../bus-popup/bus-popup.component';
@@ -22,7 +22,6 @@ import { Router } from '@angular/router';
 
 export class BusHomeComponent implements OnDestroy{  
   columsToDisplay = ["ID", "Name", "Area", "Client", "Duration", "Status"]
-  services: Array<BusService> = busServices;
   new_services: any;
   showDialog = false;
   var: any;
@@ -33,7 +32,6 @@ export class BusHomeComponent implements OnDestroy{
               private postsService: PostsService){}
 
   ngOnInit(): void {
-    console.log("Allévoy")
     this.var = this.postsService.getPosts().subscribe((value) => {
       this.new_services = value;
     });

@@ -2,7 +2,7 @@ import { Component, OnDestroy, ViewChild } from '@angular/core';
 import {GoogleMap, GoogleMapsModule } from '@angular/google-maps'
 import { PopupServiceService } from '../../services/popup-service.service';
 import { PostsService } from '../../services/posts.service';
-import { BusService } from '../../data-bus';
+import { BusService } from '../../shared/models/data-bus';
 
 @Component({
   selector: 'app-map',
@@ -28,7 +28,7 @@ export class MapComponent implements OnDestroy{
 
   constructor(private popup: PopupServiceService, private postService: PostsService){}
 
-  //Funcionalitat per a carregar la config un cop estigui inicialitzat el mapa
+  //Funcionalitat per a carregar la config un cop estigui inicialitzat el mapa -> GoogleMaps Docs
   handleMapInitialized(map: google.maps.Map){
     this.popup.OBSlatlng.subscribe((value) => {
       this.map.googleMap?.setCenter(value)

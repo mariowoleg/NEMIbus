@@ -9,11 +9,6 @@ export interface BusService{
     longitude: number;
 }
 
-export type Time = {
-    hours: number;
-    minutes: number;
-};
-
 export const busServices : Array<BusService> = [
     {
         "id": 1,
