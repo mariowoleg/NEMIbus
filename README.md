@@ -14,7 +14,7 @@ M'hauria agradat continuar escalant una mica més l'aplicació i afegir un conju
 - Accès a la informació de cadascun dels serveis mostrats al llistat al pulsar sobre ells.
 - LoadingSpinners al crear un nou servei o al tancar el menú de creació.
 
-##Dubtes (esborrany)
+## Dubtes (esborrany)
 - Configuració de LazyLoading en components encapsulats en un MatDialog.
 - Desubscriure's de observables a l'NgOnDestroy. 
 
