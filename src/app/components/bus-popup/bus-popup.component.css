@@ -1,0 +1,55 @@
+.popup-container{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    gap: 7.5px;
+    margin: 15px;
+    padding: 5px;
+}
+
+.popup-form{
+    width: auto;
+    height: auto;
+    padding: 5px;
+    align-content: left;
+    background-color: aliceblue;
+    border-radius: 10px;
+    margin: 0px 5px 0px;
+}
+
+.popup-form input, select{
+    height: 2.5em;
+    margin: 2px 2px;
+    max-width: 200px;
+    border-radius: 2px;
+    border-width: 0;
+    transition: background-color .2s ease;
+
+    &:hover{
+        background-color: rgb(197, 238, 252);
+    }
+
+    &:focus{
+        border: .5px solid #115896;
+        background-color: #ffffff;
+        outline: none;
+    }
+}
+
+.popup-form select{
+    cursor: pointer;
+}
+
+.coordinates-wrapper{
+    margin-top: 20px;
+    padding: 5px;
+    display: grid;
+}
+
+.map-wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+

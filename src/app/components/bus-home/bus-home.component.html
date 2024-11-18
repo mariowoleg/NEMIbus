@@ -1,0 +1,50 @@
+<div class="service-container">
+    <div class="service-header">
+        <h1>Bus Service</h1>
+    </div>
+    <table class="service-table">
+        <thead>
+            <tr>
+                @for (col of columsToDisplay; track $index) {
+                    <th>
+                        {{col}} 
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (service of new_services; track $index) {
+                <tr [ngClass]="{'activeClass': service.active, 'inactiveClass': !service.active}">
+                    <td>
+                        {{service.id}}
+                    </td>
+                    <td>
+                        {{service.name}}
+                    </td>
+                    <td>
+                        {{service.area}}
+                    </td>
+                    <td>
+                        {{service.client}}
+                    </td>
+                    <td>
+                        {{service.time}}
+                    </td>
+                    <td style="text-align: center;">
+                        @if (service.active) {
+                            <img src="assets/activeStatus.png" alt="active" width="24" height="24">
+                        }
+                        @else {
+                            <img src="assets/inactiveStatus.png" alt="inactive" width="24" height="24">
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <button class="service-btn" (click)="openDialog()">
+        <img src="assets/svg/plus-circle.svg" width="20" height="20" alt="">
+        <span>Add service</span>
+    </button>
+</div>
