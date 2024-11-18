@@ -1,6 +1,22 @@
 # BusProject
+Aplicació web per a la prova tècnica de programador _frontend_ de NEMI Mobility Solutions. Un cop revisada, aquest repositori pasarà a eliminar-se. :)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+
+## Comentaris
+Respecte l'enunciat original:
+- El format de les dades del camp de Time al crear un servei és de tipus String, no Time. Aquesta decisió es va prendre degut a que la llibreria "Time" es troba _deprecated_ i davant el fet que l'input de tipus=Time es troba en format hh:mm (desconec si hi ha cap forma oficial de canviar el format)
+- En quant a la creació de marcadors al mapa, s'ha optat per crear-los un cop es crea un nou servei, donat que només es necessiten les dades de {lat, lng}.
+
+## Possibles millores
+M'hauria agradat continuar escalant una mica més l'aplicació i afegir un conjunt de millores que enumeraré a continuació:
+- Ordenació dels camps de la taula del /home segons qualsevol dels atributs de forma ascendent/descendent, sense utilitzar Angular Material.
+- Accès a la informació de cadascun dels serveis mostrats al llistat al pulsar sobre ells.
+- LoadingSpinners al crear un nou servei o al tancar el menú de creació.
+
+##Dubtes (esborrany)
+- Configuració de LazyLoading en components encapsulats en un MatDialog.
+- Desubscriure's de observables a l'NgOnDestroy. 
 
 ## Development server
 
