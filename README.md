@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Comentaris
 Respecte l'enunciat original:
-- El format de les dades del camp de Time al crear un servei és de tipus String, no Time. Aquesta decisió es va prendre degut a que la llibreria "Time" es troba _deprecated_ i davant el fet que l'input de tipus=Time es troba en format hh:mm (desconec si hi ha cap forma oficial de canviar el format)
+- El format de les dades del camp de Time al crear un servei és de tipus String, no Time. Aquesta decisió es va prendre degut a que la llibreria "Time" es troba _deprecated_ i davant el fet que l'input de tipus=Time es troba en format hh:mm i desconec si hi ha cap forma de canviar el format a tipus mm:ss.
 - En quant a la creació de marcadors al mapa, s'ha optat per crear-los un cop es crea un nou servei, donat que només es necessiten les dades de {lat, lng}.
 
 ## Possibles millores
