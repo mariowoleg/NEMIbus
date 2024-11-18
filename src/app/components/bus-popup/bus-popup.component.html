@@ -1,4 +1,4 @@
-<h1>New service</h1>
+<h1 class="popup-title">New service</h1>
 <div class="popup-container">
     <form 
         [formGroup]="serviceForm"
@@ -11,22 +11,27 @@
             <input type="number" id="id" formControlName="id" required>
         
             <label for="name">Name</label>
-            <input type="text" id="name" formControlName="name" required>
-        
+            <input type="text" id="name" formControlName="name" (ngModelChange)="onChangeName()" required>
+            
+            <!--Es pot ficar també en el component i iterar-->
             <label for="area">Area</label>
             <select name="areas" id="areas" formControlName="area" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Tarragona">Tarragona</option>
+                <option value="Girona">Girona</option>
+                <option value="Lleida">Lleida</option>
             </select>
         
+            <!--Es pot ficar també en el component i iterar-->
             <label for="client">Client</label>
             <select name="clients" id="clients" formControlName="client" required>
-                <option value="c1">c1</option>
-                <option value="c2">c2</option>
-                <option value="c3">c3</option>    
-                <option value="c4">c4</option>
+                <option value="TMB">TMB</option>
+                <option value="FGC">FGC</option>
+                <option value="TRAM">TRAM</option>    
+                <option value="Hispano">Hispano Igualadina</option>
+                <option value="AMB">AMB</option>
+                <option value="Alsa">Alsa</option>
+                <option value="MonBus">MonBus</option>
             </select>
         
             <label for="Time">Time</label>

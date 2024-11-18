@@ -11,10 +11,11 @@ interface LatLng {
 })
 
 export class PopupServiceService {
-
-  center: google.maps.LatLngLiteral = { lat: 41.390205, lng: 2.154007 };
+  lat = 41.390205
+  lng = 2.154007
+  center: google.maps.LatLngLiteral = { lat: this.lat, lng: this.lng };
   OBSlatlng: Subject<google.maps.LatLngLiteral> = new Subject<google.maps.LatLngLiteral>();
-  
+  sv_name: string = "";
 
   constructor() { }
 
@@ -24,5 +25,8 @@ export class PopupServiceService {
     this.OBSlatlng.next(this.center);
   }
 
+  setName(name:string){
+    this.sv_name = name;
+  }
 
 }

@@ -1,20 +1,24 @@
-.service-container{
-    margin: 15px;
-    align-items: center;
-}
-
 .service-header{
-    height: 200px;
+    height: 300px;
+    line-height: 300px;
+    align-content: center;
     width: 100%;
     align-items: center;
-    background-image: url("https://wallpaperaccess.com/full/3053366.png");
+    display: block;
+    background: 
+        radial-gradient(circle at 50% 50%, 
+        rgba(255, 255, 255, 0.5) 30%, 
+        rgba(255, 255, 255, 1) 80%, 
+        white 60%), 
+        url("../../../../public/assets/buspedestrians.jpg") center/cover;
     background-size: cover;
     background-repeat: no-repeat;
-    display: block;
-    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-size: 1.25em;
 
 }
-
 .service-table{
     border-collapse: collapse;
     font-size: 1em;
@@ -26,7 +30,8 @@
 }
 
 .service-table thead tr{
-    background-color: #0dedab;
+    background-color: #1ab5f7;
+    /*background-color: #0dedab;*/
     color: #ffffff;
     text-align: left;
     font-weight:normal ;
@@ -43,13 +48,14 @@
 }
 
 .service-table tbody tr:last-of-type{
-    border-bottom: 2px solid #0dedab;
+    border-bottom: 2px solid #4CC9FE;
 }
 
 .activeClass{
-    background-color: rgb(208, 250, 208);
+    /*background-color: rgb(208, 250, 208);*/
+    background-color: rgb(181, 255, 181);
 }
 
 .inactiveClass{
-    background-color: rgb(250, 210, 210);
+    background-color: rgb(255, 216, 216);
 }

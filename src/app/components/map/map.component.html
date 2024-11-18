@@ -1,11 +1,7 @@
-<google-map #map  
+<google-map #map 
             width="800" 
             height="700"
             [options]="mapOptions"
             (mapInitialized)="handleMapInitialized($event)"
-            >
-    <!--@for (marker of markers; track $index) {
-        <map-marker [position]="marker.position" [options]="marker.options"></map-marker>
-}-->
-
+            (mapClick)="onListenLatLng($event)">
 </google-map>

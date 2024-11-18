@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { BusService, busServices } from '../../data-bus';
 import { NgClass, NgFor } from '@angular/common';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog'
@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 })
 
 
-export class BusHomeComponent {  
+export class BusHomeComponent implements OnDestroy{  
   columsToDisplay = ["ID", "Name", "Area", "Client", "Duration", "Status"]
   services: Array<BusService> = busServices;
   new_services: any;
@@ -42,7 +42,7 @@ export class BusHomeComponent {
 
   openDialog(){
     this.router.navigate(['/create-service']);
-    //this.popservice.showDialog = true;
+
     this.dialogRef.open(BusPopupComponent, {
       height: "auto",
       width: "auto",
@@ -53,6 +53,10 @@ export class BusHomeComponent {
     this.dialogRef.afterAllClosed.subscribe(() => {
         this.router.navigate(['/'])
     })
+  }
+
+  ngOnDestroy(): void {
+    //this.var.unsubscribe();
   }
   
 }

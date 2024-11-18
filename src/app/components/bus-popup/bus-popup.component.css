@@ -1,3 +1,11 @@
+.popup-title{
+    margin-top: 20px;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    font-weight: bold;
+    align-self: center;
+}
+
 .popup-container{
     display: flex;
     flex-direction: row;
@@ -11,9 +19,9 @@
 .popup-form{
     width: auto;
     height: auto;
-    padding: 5px;
+    padding: 10px;
     align-content: left;
-    background-color: aliceblue;
+    background-color: #caddedc4;
     border-radius: 10px;
     margin: 0px 5px 0px;
 }
@@ -35,7 +43,12 @@
         background-color: #ffffff;
         outline: none;
     }
+
+    &:invalid{
+        border-color: red;
+    }
 }
+
 
 .popup-form select{
     cursor: pointer;

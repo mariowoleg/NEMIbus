@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import {GoogleMap, GoogleMapsModule } from '@angular/google-maps'
 import { PopupServiceService } from '../../services/popup-service.service';
+import { PostsService } from '../../services/posts.service';
+import { BusService } from '../../data-bus';
 
 @Component({
   selector: 'app-map',
@@ -9,70 +11,69 @@ import { PopupServiceService } from '../../services/popup-service.service';
   templateUrl: './map.component.html',
   styleUrl: './map.component.css'
 })
-export class MapComponent implements OnInit{
+export class MapComponent implements OnDestroy{
   @ViewChild('map') map!: GoogleMap;
   center: google.maps.LatLngLiteral = { lat: 41.390205, lng: 2.154007 };
   zoom = 12;
+  services: Array<BusService> = new Array<BusService>();
+  aux_latlng: google.maps.LatLngLiteral  = {lat: 0, lng: 0}
+
 
   mapOptions: google.maps.MapOptions = {
     center: this.center,
     zoom: this.zoom
   }
 
-  markerPositions: google.maps.LatLngLiteral[] = [
-    { lat: 37.7749, lng: -122.4194 },
-    { lat: 37.7849, lng: -122.4094 }
-  ];
+  infoWindow = new google.maps.InfoWindow();
 
-  constructor(private popup: PopupServiceService){  }
+  constructor(private popup: PopupServiceService, private postService: PostsService){}
 
-  ngOnInit(): void {
+  //Funcionalitat per a carregar la config un cop estigui inicialitzat el mapa
+  handleMapInitialized(map: google.maps.Map){
     this.popup.OBSlatlng.subscribe((value) => {
-      console.log("Map Value")
-      console.log(value)
-      this.center = value;
-      this.map.googleMap?.setCenter(this.center);
+      this.map.googleMap?.setCenter(value)
+    })
+
+    this.postService.getPosts().subscribe((services) =>{
+      services.forEach((service) =>{
+        const id = service.id.toString()
+        const name = service.name
+        const sv_position = new google.maps.LatLng(service.latitude, service.longitude)
+        const marker = new google.maps.Marker({
+          position: sv_position,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          label: {
+            color: 'black',
+            text: id,
+          },
+          title: name,
+          icon: 'assets/map-pin.png'
+        });
+
+        marker.addListener('click', () => {
+          this.infoWindow.close();
+          this.infoWindow.setContent(marker.getTitle())
+          this.infoWindow.open(marker.getMap(), marker);
+        });
+      })
     })
   }
 
-  handleMapInitialized(map: google.maps.Map){
-    this.markers.forEach((markerData) => {
-      const marker = new google.maps.marker.AdvancedMarkerElement({
-        map, // Asociar el marcador con el mapa
-        position: markerData.position,
-        title: markerData.title,
-        zIndex: 1,
-      });
-  
-      // Opcional: Configurar la etiqueta (label) como contenido del marcador
-      if (markerData.label) {
-        const labelDiv = document.createElement('div');
-        labelDiv.textContent = markerData.label.text;
-        labelDiv.style.color = markerData.label.color;
-        labelDiv.style.fontSize = '14px';
-        marker.content = labelDiv;
-      }
-      // Animación personalizada: La animación no es soportada directamente por AdvancedMarkerElement.
-      // Aquí puedes implementar una animación como DROP o BOUNCE de manera personalizada, si es necesario.
-    });
-  }
-  
 
-  markers = [{
-    position:{
-    lat: 41.390205,
-    lng: 2.154007,
-  },
-    visible: false,
-    opacity: 0.1,
-    label: {
-      color: 'black',
-      text: 'Marker label ',
-    },
-    title: 'Barcelona ',
-    options: {
-      animation: google.maps.Animation.DROP,
-      icon: 'assets/map-pin.png'
+  onListenLatLng(event: google.maps.MapMouseEvent){
+    const lat = event.latLng?.lat();
+    const lng = event.latLng?.lng();
+
+    if(lat != null && lng != null){
+      this.popup.lat = lat;
+      this.popup.lng = lng;
+      this.popup.setLatLng(lat, lng)
     }
-  }]
+  }
+
+  ngOnDestroy(): void {
+    //this.popup.OBSlatlng.unsubscribe();
+  }
+
 }
