@@ -1,7 +1,7 @@
 # BusProject
-Aplicació web per a la prova tècnica de programador _frontend_ de NEMI Mobility Solutions. Un cop revisada, aquest repositori pasarà a eliminar-se. :)
+Aplicació web per a la prova tècnica de programador _frontend_ de NEMI Mobility Solutions.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11. All the data is saved using Firebase by Google.
+El projecte ha estat generat amb Angular 18. 
 
 ## Comentaris
 Respecte l'enunciat original:
